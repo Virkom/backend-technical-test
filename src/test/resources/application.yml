@@ -1,0 +1,6 @@
+jwt:
+  secret: jwt_token_secret
+  token-validity-in-seconds: 720
+
+flight:
+  availability-in-seconds: 5
