@@ -29,7 +29,7 @@ public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
 
     @Override
-    public void addBooking(BookingDto request) {
+    public Booking addBooking(BookingDto request) {
         Holder holder = new Holder();
         BeanUtils.copyProperties(request.getHolder(), holder);
 
@@ -45,7 +45,7 @@ public class BookingServiceImpl implements BookingService {
                     return flight;
                 }).collect(Collectors.toList());
 
-        bookingRepository.save(new Booking(holder, flights));
+        return bookingRepository.save(new Booking(holder, flights));
     }
 
     @Override
