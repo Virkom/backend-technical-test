@@ -21,7 +21,7 @@ public class FlightAvailableEventHandler implements ApplicationListener<FlightAv
     @Override
     public void onApplicationEvent(FlightAvailableEvent flightAvailableEvent) {
         try {
-            Thread.sleep(1000 * 60 * flightProperties.getFlightAvailabilityInSeconds());
+            Thread.sleep(1000 * flightProperties.getAvailabilityInSeconds());
             flightRepository.deleteFlight(flightAvailableEvent.getFlight());
         } catch (InterruptedException e) {
             log.error(e.getMessage(), e);

@@ -26,8 +26,9 @@ public interface BookingService {
     /**
      * Add a booking
      * @param request booking details
+     * @return saved booking
      */
-    void addBooking(BookingDto request);
+    Booking addBooking(BookingDto request);
 
     /**
      * Delete booking by Id

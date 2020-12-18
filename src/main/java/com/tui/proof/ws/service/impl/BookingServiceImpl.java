@@ -12,6 +12,8 @@ import com.tui.proof.ws.dto.BookingDto;
 import com.tui.proof.ws.dto.FlightDto;
 import com.tui.proof.ws.dto.HolderDto;
 import com.tui.proof.ws.dto.MonetaryDto;
+import com.tui.proof.ws.event.AddBookingEvent;
+import com.tui.proof.ws.event.dispatcher.EventDispatcher;
 import com.tui.proof.ws.exception.ObjectNotFoundException;
 import com.tui.proof.ws.model.Booking;
 import com.tui.proof.ws.model.Flight;
@@ -26,10 +28,11 @@ import com.tui.proof.ws.service.MessageService;
 public class BookingServiceImpl implements BookingService {
 
     private final MessageService messages;
+    private final EventDispatcher eventDispatcher;
     private final BookingRepository bookingRepository;
 
     @Override
-    public void addBooking(BookingDto request) {
+    public Booking addBooking(BookingDto request) {
         Holder holder = new Holder();
         BeanUtils.copyProperties(request.getHolder(), holder);
 
@@ -45,7 +48,9 @@ public class BookingServiceImpl implements BookingService {
                     return flight;
                 }).collect(Collectors.toList());
 
-        bookingRepository.save(new Booking(holder, flights));
+        Booking booking = bookingRepository.save(new Booking(holder, flights));
+        eventDispatcher.dispatch(new AddBookingEvent(request));
+        return booking;
     }
 
     @Override

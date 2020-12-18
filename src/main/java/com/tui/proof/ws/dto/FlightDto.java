@@ -24,12 +24,4 @@ public class FlightDto {
     @JsonDeserialize(using = LocalTimeDeserializer.class)
     @JsonFormat(pattern = "HH:mm")
     LocalTime time;
-
-//    public FlightDto(Flight flight) {
-//        this.company = flight.getCompany();
-//        this.flightNumber = flight.getFlightNumber();
-//        this.price = new MonetaryDto(flight.getPrice());
-//        this.date = flight.getDate();
-//        this.time = flight.getTime();
-//    }
 }

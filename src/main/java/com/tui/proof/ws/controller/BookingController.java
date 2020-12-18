@@ -57,9 +57,8 @@ public class BookingController {
             security = { @SecurityRequirement(name = "bearerAuth") }
     )
     @PostMapping("/")
-    public ResponseEntity<Void> addBooking(@Valid @RequestBody BookingDto request) {
-        eventDispatcher.dispatch(new AddBookingEvent(request));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Booking> addBooking(@Valid @RequestBody BookingDto request) {
+        return new ResponseEntity<>(bookingService.addBooking(request), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Get booking details",

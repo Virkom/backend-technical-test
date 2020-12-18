@@ -70,7 +70,7 @@ class AvailabilityControllerTest {
     @Test
     void availabilityRequestIsValid() throws Exception {
 
-        when(flightProperties.getFlightAvailabilityInSeconds()).thenReturn(100);
+        when(flightProperties.getAvailabilityInSeconds()).thenReturn(100);
 
         String request = "{" +
                 "\"airportOrigin\": \"origin\", " +
