@@ -16,7 +16,7 @@ class FlightPropertiesTest {
 
     @Test
     void flightPropertiesWasLoaded() {
-        assertEquals(0, flightProperties.getFlightAvailabilityInSeconds());
+        assertEquals(5, flightProperties.getAvailabilityInSeconds());
     }
 
 }

@@ -16,5 +16,5 @@ public class FlightProperties {
     /**
      * Flight availability in seconds
      */
-    private int flightAvailabilityInSeconds;
+    private int availabilityInSeconds;
 }
